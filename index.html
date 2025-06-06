@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Приглашение на свадьбу: Евгений и Маргарита</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        background-color: #faf4ec;
+        font-family: "Cormorant Infant", serif;
+        color: #69291f;
+        line-height: 1.4;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .container {
+        width: 600px;
+        max-width: 90%;
+        margin: 0 auto;
+        padding: 30px 0;
+      }
+
+      .invitation-cover {
+        text-align: center;
+        margin-bottom: 60px;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      .invitation-cover h1 {
+        font-size: 17px;
+        font-weight: 300;
+        margin-bottom: 20px;
+        white-space: pre-line;
+      }
+
+      .names {
+        font-size: 28px;
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+      }
+
+      .vertical-line {
+        width: 2px;
+        height: 80px;
+        background-color: #69291f;
+        margin: 0 auto 20px auto;
+      }
+
+      .details {
+        font-size: 14px;
+        font-weight: 300;
+        margin-bottom: 20px;
+        margin-left: 40%;
+      }
+
+      .details p {
+        margin-bottom: 8px;
+      }
+
+      .cover-footer {
+        font-size: 14px;
+        font-weight: 300;
+        margin-bottom: 40px;
+      }
+
+      .countdown {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+
+      .countdown-item {
+        text-align: center;
+        flex: 1;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      .countdown-item .number {
+        font-size: 36px;
+        font-weight: 300;
+        margin-bottom: 6px;
+      }
+
+      .countdown-item .label {
+        font-size: 14px;
+        font-weight: 300;
+      }
+
+      .greeting-section {
+        margin-bottom: 60px;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      .greeting-section .heading {
+        font-size: 36px;
+        font-weight: 300;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .greeting-text {
+        font-size: 14px;
+        font-weight: 300;
+        text-align: center;
+        margin-bottom: 20px;
+        line-height: 1.5;
+      }
+
+      .greeting-text p {
+        margin-bottom: 12px;
+      }
+
+      .photo-container {
+        text-align: center;
+        margin-bottom: 30px;
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      .photo-container img {
+        width: 100%;
+        max-width: 500px;
+        border-radius: 8px;
+        display: inline-block;
+      }
+
+      .gifts-section {
+        font-size: 14px;
+        font-weight: 300;
+        text-align: center;
+        margin-bottom: 20px;
+        line-height: 1.5;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      .gifts-section h2 {
+        font-size: 28px;
+        font-weight: 300;
+        margin-bottom: 12px;
+      }
+
+      .notes-section {
+        margin-bottom: 60px;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      .notes-section .note-block {
+        margin-bottom: 30px;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      .notes-section .note-block h3 {
+        font-size: 28px;
+        font-weight: 300;
+        margin-bottom: 10px;
+      }
+
+      .notes-section .note-block p {
+        font-size: 14px;
+        font-weight: 300;
+        margin-bottom: 6px;
+        line-height: 1.5;
+      }
+
+      .notes-section .big-thanks {
+        font-size: 28px;
+        font-weight: 300;
+        text-align: center;
+        margin: 40px 0 20px 0;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      .palette-container {
+        text-align: center;
+        margin-top: 20px;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      .palette-svg {
+        display: inline-block;
+        width: 250px;
+        height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <section class="invitation-cover">
+        <h1>ПРИГЛАШАЕМ <br />ВАС НА НАШУ СВАДЬБУ</h1>
+        <div class="names">
+          ЕВГЕНИЙ<br />
+          &<br />
+          МАРГАРИТА
+        </div>
+        <div class="vertical-line"></div>
+        <div class="details">
+          <p>11 октября 2025, суббота, 16:00</p>
+          <p>Ресторан "Weekend"</p>
+          <p>ул. Левобережная, 47</p>
+        </div>
+        <div class="cover-footer">
+          Будем счастливы разделить этот день с Вами!
+        </div>
+        <div class="countdown">
+          <div class="countdown-item">
+            <div class="number" id="weeks">00</div>
+            <div class="label">недель</div>
+          </div>
+          <div class="countdown-item">
+            <div class="number" id="days">00</div>
+            <div class="label">дней</div>
+          </div>
+          <div class="countdown-item">
+            <div class="number" id="hours">00</div>
+            <div class="label">часов</div>
+          </div>
+          <div class="countdown-item">
+            <div class="number" id="minutes">00</div>
+            <div class="label">минут</div>
+          </div>
+          <div class="countdown-item">
+            <div class="number" id="seconds">00</div>
+            <div class="label">секунд</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="greeting-section">
+        <div class="heading">ДОРОГОЙ ГОСТЬ!</div>
+        <div class="greeting-text">
+          <p>
+            Мы рады сообщить Вам, что 11.10.2025 состоится самое главное
+            торжество в нашей жизни – день нашей свадьбы!
+          </p>
+          <p>
+            Приглашаем Вас разделить с нами радость этого незабываемого дня.
+          </p>
+          <p><strong>11.10.2025 в 16:00</strong></p>
+        </div>
+        <div class="photo-container">
+          <img src="https://i.ibb.co/bgnYHpjJ/IMG-7946.jpg" alt="Фото пары" />
+        </div>
+        <div class="gifts-section">
+          <h2>ПОЖЕЛАНИЯ ПО ПОДАРКАМ</h2>
+          <p>
+            Мы понимаем, что дарить цветы на свадьбу – это традиция, но мы не
+            сможем насладиться их красотой в полной мере!
+          </p>
+          <p>
+            Будем рады любой другой альтернативе (хороший алкоголь или в денежном
+            эквиваленте).
+          </p>
+        </div>
+      </section>
+
+      <section class="notes-section">
+        <div class="note-block">
+          <h3>ПРИМЕЧАНИЕ</h3>
+          <p>
+            Будем благодарны, если Вы придете без детей, ведь мы хотим, чтобы
+            каждый гость наслаждался этим вечером.
+          </p>
+        </div>
+        <div class="note-block">
+          <h3>ПОДТВЕРЖДЕНИЕ</h3>
+          <p>Пожалуйста, подтвердите свое присутствие до 10.09.2025.</p>
+        </div>
+        <div class="note-block">
+          <h3>ФОТО И ВИДЕО</h3>
+          <p>
+            Фото и видео с нашего торжества будут доступны в течение 2-х
+            месяцев.
+          </p>
+        </div>
+        <div class="big-thanks">ЖДЁМ ВАС!</div>
+        <p style="text-align: center; font-size: 14px; font-weight: 300">
+          Будем благодарны, если при выборе нарядов на наше торжество Вы
+          придержитесь следующей палитры
+        </p>
+        <div class="palette-container">
+          <svg
+            class="palette-svg"
+            viewBox="0 0 290 50"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="25" cy="25" r="20" fill="#F5EDE0" stroke="#000000" stroke-width="1" />
+            <circle cx="85" cy="25" r="20" fill="#D8A15F" stroke="#000000" stroke-width="1" />
+            <circle cx="145" cy="25" r="20" fill="#8C5830" stroke="#000000" stroke-width="1" />
+            <circle cx="205" cy="25" r="20" fill="#B0A49A" stroke="#000000" stroke-width="1" />
+            <circle cx="265" cy="25" r="20" fill="#000000" stroke="#000000" stroke-width="1" />
+          </svg>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      const targetDate = new Date("2025-10-11T16:00:00");
+
+      function updateCountdown() {
+        const now = new Date();
+        const diff = targetDate - now;
+        if (diff <= 0) {
+          ["weeks", "days", "hours", "minutes", "seconds"].forEach(
+            (id) => (document.getElementById(id).innerText = "00")
+          );
+          clearInterval(countdownInterval);
+          return;
+        }
+        const totalSeconds = Math.floor(diff / 1000);
+        const weeks = Math.floor(totalSeconds / (7 * 24 * 60 * 60));
+        const days = Math.floor(
+          (totalSeconds % (7 * 24 * 60 * 60)) / (24 * 60 * 60)
+        );
+        const hours = Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60));
+        const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
+        const seconds = totalSeconds % 60;
+        document.getElementById("weeks").innerText = String(weeks).padStart(
+          2,
+          "0"
+        );
+        document.getElementById("days").innerText = String(days).padStart(
+          2,
+          "0"
+        );
+        document.getElementById("hours").innerText = String(hours).padStart(
+          2,
+          "0"
+        );
+        document.getElementById("minutes").innerText = String(minutes).padStart(
+          2,
+          "0"
+        );
+        document.getElementById("seconds").innerText = String(seconds).padStart(
+          2,
+          "0"
+        );
+      }
+      updateCountdown();
+      const countdownInterval = setInterval(updateCountdown, 1000);
+      window.addEventListener("DOMContentLoaded", () => {
+        gsap.to(".invitation-cover", {
+          duration: 1.2,
+          opacity: 1,
+          y: 0,
+          ease: "power2.out",
+        });
+        gsap.to(".countdown-item", {
+          duration: 1,
+          opacity: 1,
+          y: 0,
+          ease: "power2.out",
+          stagger: 0.2,
+          delay: 1,
+        });
+        gsap.to(".greeting-section", {
+          duration: 1,
+          opacity: 1,
+          y: 0,
+          ease: "power2.out",
+          delay: 1.8,
+        });
+        gsap.from(".greeting-section .heading", {
+          duration: 1,
+          y: -20,
+          opacity: 0,
+          ease: "power2.out",
+          delay: 2,
+        });
+        gsap.from(".greeting-text p", {
+          duration: 1,
+          y: -10,
+          opacity: 0,
+          ease: "power2.out",
+          stagger: 0.15,
+          delay: 2.2,
+        });
+        gsap.to(".photo-container", {
+          duration: 1,
+          opacity: 1,
+          scale: 1,
+          ease: "power2.out",
+          delay: 2.8,
+        });
+        gsap.from(".photo-container img", {
+          duration: 1.2,
+          scale: 0.8,
+          opacity: 0,
+          ease: "back.out(1.2)",
+          delay: 3,
+        });
+        gsap.to(".gifts-section", {
+          duration: 1,
+          opacity: 1,
+          y: 0,
+          ease: "power2.out",
+          delay: 3.4,
+        });
+        gsap.from(".gifts-section h2", {
+          duration: 1,
+          y: 20,
+          opacity: 0,
+          ease: "power2.out",
+          delay: 3.6,
+        });
+        gsap.from(".gifts-section p", {
+          duration: 1,
+          y: 10,
+          opacity: 0,
+          ease: "power2.out",
+          stagger: 0.15,
+          delay: 3.8,
+        });
+        gsap.to(".notes-section", {
+          duration: 1,
+          opacity: 1,
+          y: 0,
+          ease: "power2.out",
+          delay: 4.4,
+        });
+        gsap.to(".notes-section .note-block", {
+          duration: 0.8,
+          opacity: 1,
+          y: 0,
+          ease: "power2.out",
+          stagger: 0.2,
+          delay: 4.6,
+        });
+        gsap.to(".big-thanks", {
+          duration: 1,
+          opacity: 1,
+          y: 0,
+          ease: "power2.out",
+          delay: 5.2,
+        });
+        gsap.to(".palette-container", {
+          duration: 1,
+          opacity: 1,
+          y: 0,
+          ease: "power2.out",
+          delay: 5.6,
+        });
+        gsap.from(".palette-svg circle", {
+          duration: 0.8,
+          scale: 0,
+          opacity: 0,
+          ease: "back.out(1.5)",
+          stagger: 0.1,
+          delay: 5.8,
+        });
+      });
+    </script>
+  </body>
+</html>
